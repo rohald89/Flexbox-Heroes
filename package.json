@@ -13,11 +13,18 @@
     "@mdx-js/loader": "^2.1.3",
     "@mdx-js/react": "^2.1.3",
     "@next/mdx": "^12.3.1",
+    "@uiw/react-codemirror": "^4.12.3",
+    "fs": "^0.0.1-security",
+    "glob": "^8.0.3",
+    "gray-matter": "^4.0.3",
     "next": "12.3.1",
+    "next-mdx-remote": "^4.1.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.7",
     "eslint": "8.24.0",
     "eslint-config-next": "12.3.1"
   }

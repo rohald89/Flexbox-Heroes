@@ -1,0 +1,36 @@
+---
+title: 'Align Items'
+slug: 'align-items'
+excerpt: 'Random excerpt text'
+---
+
+
+<CH.Section>
+Justify Content aligns items horizontally and accepts the following values:
+
+- _`flex-start`_: Items align to the left side of the container.
+- _`flex-end`_: Items align to the right side of the container.
+- _`center`_: Items align at the center of the container.
+- _`space-between`_: Items display with equal spacing between them.
+- _`space-around`_: Items display with equal spacing around them.
+
+For example, _`justify-content: flex-end;`_ will move the frog to the right.
+
+<CH.Code>
+
+```css style.css
+#pond {
+    display: flex;
+    justify-content: flex-end;
+}
+```
+
+```html index.html
+<div id="pond">
+    <div id="frog"></div>
+    <div id="lilypad"></div>
+</div>
+```
+
+</CH.Code>
+</CH.Section>
