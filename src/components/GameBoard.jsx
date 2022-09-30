@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 
 const BoardWrapper = styled.div`
@@ -25,11 +27,17 @@ const BoardWrapper = styled.div`
         height: 100%;
 `;
 
-const GameBoard = ({ solution, elements }) => {
-  console.log(solution, elements)
+const GameBoard = ({ solution, elements, answerInput }) => {
+  const answerRef = useRef();
+
+  console.log('rerender');
+  useEffect(() => {
+    answerRef.current.style = answerInput
+  }, [answerInput]);
+
   return (
     <BoardWrapper>
-        <div id="answer">
+        <div id="answer" ref={answerRef}>
             {
                 elements.map((element, index) => (
                     <FlexItem key={index} type={"answer"}>{element}</FlexItem>

@@ -7,6 +7,7 @@ import theme from "shiki/themes/nord.json"
 import CodeEditor from "../../components/CodeEditor";
 import GameBoard from "../../components/GameBoard";
 import styled from "styled-components";
+import { useState } from "react";
 
 const ChallengeWrapper = styled.div`
     display: grid;
@@ -14,17 +15,20 @@ const ChallengeWrapper = styled.div`
     gap: 1rem;
 `;
 
-export default function PropertyPage({ challenge }) {
+export default function ChallengePage({ challenge }) {
     const { title, solution, elements, boilerplate } = challenge.frontmatter;
-    console.log(challenge.frontmatter);
+    const { source } = challenge;
+
+    const [answerInput, setAnswerInput] = useState("");
+
     return (
         <ChallengeWrapper>
             <div>
                 <h1>{title}</h1>
-                <MDXRemote {...challenge.source} components={{CH}}/>
-                <CodeEditor boilerplate={boilerplate} />
+                <MDXRemote {...source} components={{CH}}/>
+                <CodeEditor boilerplate={boilerplate} setAnswerInput={setAnswerInput} />
             </div>
-            <GameBoard solution={solution} elements={elements} />
+            <GameBoard solution={solution} elements={elements} answerInput={answerInput} />
         </ChallengeWrapper>
     )
 }
