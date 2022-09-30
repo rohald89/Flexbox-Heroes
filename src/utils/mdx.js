@@ -43,7 +43,6 @@ export async function getChallengeById(id) {
       content,
       frontmatter: {
         id,
-        excerpt: data.excerpt,
         title: data.title,
         ...data,
       },

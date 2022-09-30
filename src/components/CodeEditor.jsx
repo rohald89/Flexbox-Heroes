@@ -1,10 +1,10 @@
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
-
 const CodeEditor = ({ boilerplate }) => {
-    console.log(boilerplate)
+  console.log(boilerplate)
+
   return (
-    <div>CodeEditor</div>
+    <div>
+        <h1>Code Editor</h1>
+    </div>
   )
 }
 export default CodeEditor

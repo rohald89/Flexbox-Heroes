@@ -6,19 +6,26 @@ import { CH } from "@code-hike/mdx/dist/components.cjs.js"
 import theme from "shiki/themes/nord.json"
 import CodeEditor from "../../components/CodeEditor";
 import GameBoard from "../../components/GameBoard";
+import styled from "styled-components";
+
+const ChallengeWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+`;
 
 export default function PropertyPage({ challenge }) {
-    const { answer, boilerplate } = challenge.frontmatter;
+    const { title, solution, boilerplate } = challenge.frontmatter;
     console.log(challenge.frontmatter);
     return (
-        <>
-        <div>
-            <h1>Hello</h1>
-            <MDXRemote {...challenge.source} components={{CH}}/>
-            <CodeEditor boilerplate={boilerplate} />
-        </div>
-        <GameBoard answer={answer}/>
-        </>
+        <ChallengeWrapper>
+            <div>
+                <h1>{title}</h1>
+                <MDXRemote {...challenge.source} components={{CH}}/>
+                <CodeEditor boilerplate={boilerplate} />
+            </div>
+            <GameBoard solution={solution}/>
+        </ChallengeWrapper>
     )
 }
 
