@@ -15,7 +15,7 @@ const ChallengeWrapper = styled.div`
 `;
 
 export default function PropertyPage({ challenge }) {
-    const { title, solution, boilerplate } = challenge.frontmatter;
+    const { title, solution, elements, boilerplate } = challenge.frontmatter;
     console.log(challenge.frontmatter);
     return (
         <ChallengeWrapper>
@@ -24,7 +24,7 @@ export default function PropertyPage({ challenge }) {
                 <MDXRemote {...challenge.source} components={{CH}}/>
                 <CodeEditor boilerplate={boilerplate} />
             </div>
-            <GameBoard solution={solution}/>
+            <GameBoard solution={solution} elements={elements} />
         </ChallengeWrapper>
     )
 }

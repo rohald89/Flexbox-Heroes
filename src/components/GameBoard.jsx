@@ -25,27 +25,31 @@ const BoardWrapper = styled.div`
         height: 100%;
 `;
 
-const GameBoard = ({ solution }) => {
-  console.log(solution)
+const GameBoard = ({ solution, elements }) => {
+  console.log(solution, elements)
   return (
     <BoardWrapper>
         <div id="answer">
-            <FlexItem type={"answer"} />
-            <FlexItem type={"answer"} />
-            <FlexItem type={"answer"} />
+            {
+                elements.map((element, index) => (
+                    <FlexItem key={index} type={"answer"}>{element}</FlexItem>
+                ))
+            }
         </div>
         <div id="solution" style={solution}>
-            <FlexItem type={'solution'} />
-            <FlexItem type={'solution'} />
-            <FlexItem type={'solution'} />
+            {
+                elements.map((element, index) => (
+                    <FlexItem key={index} type={"solution"}>{element}</FlexItem>
+                ))
+            }
         </div>
     </BoardWrapper>
   )
 }
 
-const FlexItem = ({ type }) => {
+const FlexItem = ({ type, children }) => {
     return (
-        <FlexItemStyles type={type}></FlexItemStyles>
+        <FlexItemStyles type={type}>{children}</FlexItemStyles>
     )
 }
 
