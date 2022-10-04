@@ -1,75 +1,69 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRef } from 'react';
-import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-
-const BoardWrapper = styled.div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: #21252c;
-
-    #answer {
-        display: flex;
-        z-index: 20;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    #solution {
-        display: flex;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-`;
+import { useDebounce } from '../hooks/useDebounce';
+import BoardWrapper from '../styles/BoardWrapper';
+import FlexItemStyles from '../styles/FlexItemStyles';
 
 const GameBoard = ({ solution, elements }) => {
   const answerRef = useRef();
+  const solutionRef = useRef();
   const { answer } = useSelector((state) => state.challenge);
+  const [correctAnswer, setCorrectAnswer] = useState(false);
+  const debouncedAnswer = useDebounce(answer, 200);
 
   useEffect(() => {
-    console.log(answerRef.current);
+    console.log('checking');
+    const answerItems = answerRef.current.children;
+    const solutionItems = solutionRef.current.children;
     answerRef.current.style = answer;
-  }, [answer]);
+    setCorrectAnswer(checkAnswer(answerItems, solutionItems));
+  }, [debouncedAnswer]);
 
+  const checkAnswer = (answers, solutions) => {
+    let matches = 0
+    for(let i = 0; i < answers.length; i++) {
+      console.log(answers[i].offsetLeft, solutions[i].offsetLeft)
+      if(answers[i].offsetLeft === solutions[i].offsetLeft && answers[i].offsetTop === solutions[i].offsetTop) {
+        matches++
+      } else {
+        return false
+      }
+    }
+    return true
+  }
   return (
     <BoardWrapper>
       <div id="answer" ref={answerRef}>
-        {elements.map((el) => (
-          <FlexItem key={el.id} color={el.color.hex} type={'answer'} />
+        {elements.map((el, i) => (
+          <FlexItem 
+            key={el.id} 
+            color={el.color.hex} 
+            type={'answer'} 
+          />
         ))}
       </div>
-      <div id="solution" style={solution}>
-        {elements.map((el) => (
-          <FlexItem key={el.id} color={el.color.hex} type={'solution'} />
+      <div id="solution" ref={solutionRef} style={solution}>
+        {elements.map((el, i) => (
+          <FlexItem 
+            key={el.id} 
+            color={el.color.hex} 
+            type={'solution'} 
+          />
         ))}
       </div>
+        { correctAnswer && <h1>You got it!</h1> }
     </BoardWrapper>
   );
 };
 
-const FlexItem = ({ type, color, children }) => {
+const FlexItem = ({ children, ...props }) => {
   return (
-    <FlexItemStyles type={type} color={color}>
+    <FlexItemStyles {...props} >  
       {children}
     </FlexItemStyles>
   );
 };
 
-const FlexItemStyles = styled.div`
-  background-color: ${(props) => (props.type === 'answer' ? props.color : '')};
-  width: 50px;
-  height: 50px;
-  margin: 4px;
-  border: 4px solid
-    ${(props) => (props.type === 'solution' ? props.color : 'transparent')};
-  border-radius: ${(props) => (props.type === 'answer' ? '50%' : '0')};
-  opacity: ${(props) => (props.type === 'solution' ? 0.8 : 1)};
-`;
 
 export default GameBoard;

@@ -46,6 +46,8 @@ export async function fetchAllChallenges() {
                 justifyContent
                 alignItems
                 flexDirection
+                flexWrap
+                gap
               }
             }
           }
@@ -82,6 +84,8 @@ query getChallenge($id: ID!) {
       justifyContent
       alignItems 
       flexDirection
+      flexWrap
+      gap
     }
     title
   }
