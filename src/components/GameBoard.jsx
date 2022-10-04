@@ -20,6 +20,7 @@ const GameBoard = ({ solution, elements }) => {
     answerRef.current.style = answer;
     const correct = checkAnswer(answerItems, solutionItems);
     dispatch(setCorrectAnswer(correct))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedAnswer]);
 
   const checkAnswer = (answers, solutions) => {

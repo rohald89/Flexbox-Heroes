@@ -51,7 +51,6 @@ const CodeEditor = ({ boilerplate }) => {
   const handleChange = (e) => {
     dispatch(setAnswer(e.target.value));
   };
-  console.log(boilerplate);
 
   return (
     <EditorWrapper>
@@ -70,7 +69,7 @@ const CodeEditor = ({ boilerplate }) => {
         <pre style={{ margin: 0 }}>&#35;<span style={{ color: 'rgb(143,188,187)'}}>container</span> &#123;</pre>
         <pre style={{ margin: 0, paddingLeft: "2.4rem" }}>display: <span style={{ color: 'rgb(129,161, 193)'}}>flex;</span></pre>
         <TextEditor type="text" onChange={handleChange} />
-        <pre style={{ margin: 0 }}>}</pre>
+        <pre style={{ margin: 0 }}>&#125;</pre>
       </Editor>
     </EditorWrapper>
   );
