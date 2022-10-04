@@ -15,6 +15,10 @@ const ChallengeWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+
+  .left-side {
+    padding: 2rem;
+  }
 `;
 
 export default function ChallengePage({ source, challenge }) {
@@ -28,7 +32,7 @@ export default function ChallengePage({ source, challenge }) {
 
   return (
     <ChallengeWrapper>
-      <div>
+      <div className="left-side">
         <h1>{title}</h1>
         <MDXRemote {...source} components={{ CH }} />
         <CodeEditor boilerplate={boilerplate} />
