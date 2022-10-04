@@ -25,8 +25,13 @@ const GameBoard = ({ solution, elements }) => {
   const checkAnswer = (answers, solutions) => {
     let matches = 0
     for(let i = 0; i < answers.length; i++) {
-      console.log(answers[i].offsetLeft, solutions[i].offsetLeft)
-      if(answers[i].offsetLeft === solutions[i].offsetLeft && answers[i].offsetTop === solutions[i].offsetTop) {
+      console.log(answers[i].offsetWidth, solutions[i].offsetHeight)
+      if(
+        answers[i].offsetLeft === solutions[i].offsetLeft 
+          && answers[i].offsetTop === solutions[i].offsetTop
+          && answers[i].offsetWidth === solutions[i].offsetWidth
+          && answers[i].offsetHeight === solutions[i].offsetHeight
+      ) {
         matches++
       } else {
         return false

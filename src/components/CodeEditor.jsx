@@ -42,10 +42,6 @@ const TextEditor = styled.textarea`
   outline: none;
   box-sizing: border-box;
   width: 100%;
-
-  .idName {
-    color: pink;
-  }
 `;
 
 const CodeEditor = ({ boilerplate }) => {
@@ -73,7 +69,7 @@ const CodeEditor = ({ boilerplate }) => {
         {/* <pre style={{margin: 0}}>{boilerplate}</pre> */}
         <pre style={{ margin: 0 }}>&#35;<span style={{ color: 'rgb(143,188,187)'}}>container</span> &#123;</pre>
         <pre style={{ margin: 0, paddingLeft: "2.4rem" }}>display: <span style={{ color: 'rgb(129,161, 193)'}}>flex;</span></pre>
-        <TextEditor type="text" defaultValue={answer} onChange={handleChange} />
+        <TextEditor type="text" onChange={handleChange} />
         <pre style={{ margin: 0 }}>}</pre>
       </Editor>
     </EditorWrapper>
