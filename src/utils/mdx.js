@@ -35,7 +35,6 @@ export async function getPropertyFromSlug(slug) {
   }
 
 export async function getChallengeById(id) {
-    const fetch('')
     const challengeDir = path.join(challengePath, `${id}.mdx`)
     const source = fs.readFileSync(challengeDir)
     const { content, data } = matter(source)
