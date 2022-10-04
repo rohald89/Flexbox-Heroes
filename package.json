@@ -13,6 +13,7 @@
     "@mdx-js/loader": "^2.1.3",
     "@mdx-js/react": "^2.1.3",
     "@next/mdx": "^12.3.1",
+    "@reduxjs/toolkit": "^1.8.5",
     "fs": "^0.0.1-security",
     "glob": "^8.0.3",
     "gray-matter": "^4.0.3",
@@ -20,6 +21,9 @@
     "next-mdx-remote": "^4.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-redux": "^8.0.4",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

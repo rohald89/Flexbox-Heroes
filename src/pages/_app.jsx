@@ -1,5 +1,8 @@
 import "@code-hike/mdx/dist/index.css"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
+import { Provider } from "react-redux";
+import { persistor, store } from "../app/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -20,7 +23,11 @@ function MyApp({ Component, pageProps }) {
   <>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <Component {...pageProps} />
+        </PersistGate>
+        </Provider>
     </ThemeProvider>
   </>
 )}

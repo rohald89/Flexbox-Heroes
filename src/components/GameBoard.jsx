@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRef } from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const BoardWrapper = styled.div`
     position: relative;
@@ -27,27 +28,27 @@ const BoardWrapper = styled.div`
         height: 100%;
 `;
 
-const GameBoard = ({ solution, elements, answerInput }) => {
+const GameBoard = ({ solution, elements }) => {
   const answerRef = useRef();
+  const { answer } = useSelector((state) => state.challenge);
 
-  console.log('rerender');
   useEffect(() => {
-    answerRef.current.style = answerInput
-  }, [answerInput]);
+    answerRef.current.style = answer
+  }, [answer]);
 
   return (
     <BoardWrapper>
         <div id="answer" ref={answerRef}>
             {
-                elements.map((element, index) => (
-                    <FlexItem key={index} type={"answer"}>{element}</FlexItem>
+                [...Array(elements)].map((element, index) => (
+                    <FlexItem key={index} type={"answer"}/>
                 ))
             }
         </div>
         <div id="solution" style={solution}>
             {
-                elements.map((element, index) => (
-                    <FlexItem key={index} type={"solution"}>{element}</FlexItem>
+                [...Array(elements)].map((element, index) => (
+                    <FlexItem key={index} type={"solution"}/>
                 ))
             }
         </div>

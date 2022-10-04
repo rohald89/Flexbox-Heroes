@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import CodeEditor from '../components/CodeEditor';
 import Description from '../data/challenges/1.mdx';
 import GameBoard from '../components/GameBoard';
+import { fetchAllChallenges } from '../lib/hygraph';
 
 const MainWrapper = styled.main`
     display: flex;
@@ -21,6 +22,7 @@ const LeftSide = styled.div`
 
 
 export default function Home() {
+
   return (
     <div className="container">
         <Head>
@@ -28,13 +30,13 @@ export default function Home() {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <MainWrapper >
-            <LeftSide>
+            {/* <LeftSide>
                 <Description />
                 <CodeEditor />
             </LeftSide>
             <div>
                 <GameBoard />
-            </div>
+            </div> */}
         </MainWrapper>
     </div>
   )
