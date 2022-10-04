@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCorrectAnswer } from '../app/challengeSlice';
 import { useDebounce } from '../hooks/useDebounce';
 import BoardWrapper from '../styles/BoardWrapper';
 import FlexItemStyles from '../styles/FlexItemStyles';
@@ -8,16 +9,17 @@ import FlexItemStyles from '../styles/FlexItemStyles';
 const GameBoard = ({ solution, elements }) => {
   const answerRef = useRef();
   const solutionRef = useRef();
-  const { answer } = useSelector((state) => state.challenge);
-  const [correctAnswer, setCorrectAnswer] = useState(false);
+  const { answer, correctAnswer } = useSelector((state) => state.challenge);
+  /* const [correctAnswer, setCorrectAnswer] = useState(false); */
   const debouncedAnswer = useDebounce(answer, 200);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('checking');
     const answerItems = answerRef.current.children;
     const solutionItems = solutionRef.current.children;
     answerRef.current.style = answer;
-    setCorrectAnswer(checkAnswer(answerItems, solutionItems));
+    const correct = checkAnswer(answerItems, solutionItems);
+    dispatch(setCorrectAnswer(correct))
   }, [debouncedAnswer]);
 
   const checkAnswer = (answers, solutions) => {
@@ -52,7 +54,6 @@ const GameBoard = ({ solution, elements }) => {
           />
         ))}
       </div>
-        { correctAnswer && <h1>You got it!</h1> }
     </BoardWrapper>
   );
 };

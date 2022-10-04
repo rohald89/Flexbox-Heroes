@@ -7,6 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
+  background-color: #c9d5e3;
 }
 
 *, *:before, *:after {

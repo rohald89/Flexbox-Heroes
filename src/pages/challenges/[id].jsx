@@ -7,23 +7,21 @@ import CodeEditor from '../../components/CodeEditor';
 import GameBoard from '../../components/GameBoard';
 import styled from 'styled-components';
 import { setActiveChallenge } from '../../app/challengeSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchAllChallenges, fetchChallengeById } from '../../lib/hygraph';
 
 const ChallengeWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-
-  .left-side {
-    padding: 2rem;
-  }
+  gap: 3rem;
+  padding: 2rem;
 `;
 
 export default function ChallengePage({ source, challenge }) {
   const { title, solution, flexItems, boilerplate } = challenge;
 
+  const { correctAnswer } = useSelector((state) => state.challenge);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,6 +36,9 @@ export default function ChallengePage({ source, challenge }) {
         <CodeEditor boilerplate={boilerplate} />
       </div>
       <GameBoard solution={solution} elements={flexItems} />
+      {
+      correctAnswer ? <h1>Got it!</h1> : <h1>Keep trying</h1>
+    }
     </ChallengeWrapper>
   );
 }
