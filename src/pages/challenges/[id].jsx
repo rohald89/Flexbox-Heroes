@@ -50,6 +50,16 @@ export async function getStaticProps({ params }) {
         }
     });
 
+  // clean solution object to only hold properties that aren't default
+  const solution = data.challenge.solution;
+  Object.keys(solution).forEach((key) => {
+    return solution[key] == null && delete solution[key]
+    /* solution[key] = solution[key].replace('_', '-') */
+  })
+
+  // format the values correctly to have `-` rather than `_` as required in the CMS
+  Object.keys(solution).forEach(key => solution[key] = solution[key].replace('_', '-'))
+  console.log(data.challenge.solution);
     return {
         props: {
                 source: mdxSource,

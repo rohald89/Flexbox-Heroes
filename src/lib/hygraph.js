@@ -33,11 +33,19 @@ export async function fetchAllChallenges() {
             challenges {
               id
               title
-              flexItems
+              flexItems {
+                    ... on FlexItem {
+                      id
+                      color {
+                        hex
+                      }
+                    }
+                  }
               description
               solution {
                 justifyContent
                 alignItems
+                flexDirection
               }
             }
           }
@@ -60,12 +68,20 @@ query getChallenge($id: ID!) {
     id: $id
   }){
     id
-    flexItems
+    flexItems {
+      ... on FlexItem {
+        id
+        color {
+          hex
+        }
+      }
+    }
     description
     boilerplate
     solution {
       justifyContent
       alignItems 
+      flexDirection
     }
     title
   }
