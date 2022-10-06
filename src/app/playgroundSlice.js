@@ -25,6 +25,6 @@ export const playgroundSlice = createSlice({
   },
 });
 
-export const {styles} = playgroundSlice.actions;
+export const {} = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;

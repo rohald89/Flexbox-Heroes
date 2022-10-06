@@ -5,6 +5,7 @@ import { setAnswer } from '../app/challengeSlice';
 const EditorWrapper = styled.div`
   display: flex;
   padding: 1rem;
+  padding-right: 0;
   background-color: #2e3440;
   border-radius: 6px;
   box-shadow: 0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3),0 -6px 16px -6px rgba(0,0,0,.025);
@@ -30,13 +31,14 @@ const Editor = styled.div`
 `;
 const TextEditor = styled.textarea`
   color: inherit;
-  background-color: #2e3440;
+  background-color: #363B48;
   margin: 0;
   font-size: 1rem;
   line-height: 1;
   padding: 0;
   padding-left: 2.4rem;
   border: none;
+  border-left: 3px solid rgb(55, 148, 255);
   height: 4rem;
   resize: none;
   outline: none;
@@ -68,7 +70,7 @@ const CodeEditor = ({ boilerplate }) => {
         {/* <pre style={{margin: 0}}>{boilerplate}</pre> */}
         <pre style={{ margin: 0 }}>&#35;<span style={{ color: 'rgb(143,188,187)'}}>container</span> &#123;</pre>
         <pre style={{ margin: 0, paddingLeft: "2.4rem" }}>display: <span style={{ color: 'rgb(129,161, 193)'}}>flex;</span></pre>
-        <TextEditor type="text" onChange={handleChange} />
+        <TextEditor type="text" onChange={handleChange} placeholder="/* Enter your solution here */"/>
         <pre style={{ margin: 0 }}>&#125;</pre>
       </Editor>
     </EditorWrapper>

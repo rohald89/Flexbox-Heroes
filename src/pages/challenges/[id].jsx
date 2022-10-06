@@ -5,18 +5,11 @@ import { CH } from '@code-hike/mdx/dist/components.cjs.js';
 import theme from 'shiki/themes/nord.json';
 import CodeEditor from '../../components/CodeEditor';
 import GameBoard from '../../components/GameBoard';
-import styled from 'styled-components';
 import { setActiveChallenge } from '../../app/challengeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchAllChallenges, fetchChallengeById } from '../../lib/hygraph';
-
-const ChallengeWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  padding: 2rem;
-`;
+import PageWrapper from './../../styles/PageWrapper';
 
 export default function ChallengePage({ source, challenge }) {
   const { title, solution, flexItems, boilerplate } = challenge;
@@ -30,7 +23,7 @@ export default function ChallengePage({ source, challenge }) {
   }, []);
 
   return (
-    <ChallengeWrapper>
+    <PageWrapper>
       <div className="left-side">
         <h1>{title}</h1>
         <MDXRemote {...source} components={{ CH }} />
@@ -40,7 +33,7 @@ export default function ChallengePage({ source, challenge }) {
       {
       correctAnswer ? <h1>Got it!</h1> : <h1>Keep trying</h1>
     }
-    </ChallengeWrapper>
+    </PageWrapper>
   );
 }
 
