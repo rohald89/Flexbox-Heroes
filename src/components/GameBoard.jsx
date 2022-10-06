@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCorrectAnswer } from '../app/challengeSlice';
 import { useDebounce } from '../hooks/useDebounce';
 import BoardWrapper from '../styles/BoardWrapper';
-import FlexItemStyles from '../styles/FlexItemStyles';
+import FlexItem from './FlexItem';
 
 const GameBoard = ({ solution, elements }) => {
   const answerRef = useRef();
   const solutionRef = useRef();
   const { answer, correctAnswer } = useSelector((state) => state.challenge);
-  /* const [correctAnswer, setCorrectAnswer] = useState(false); */
   const debouncedAnswer = useDebounce(answer, 200);
   const dispatch = useDispatch();
 
@@ -61,14 +60,6 @@ const GameBoard = ({ solution, elements }) => {
         ))}
       </div>
     </BoardWrapper>
-  );
-};
-
-const FlexItem = ({ children, ...props }) => {
-  return (
-    <FlexItemStyles {...props} >  
-      {children}
-    </FlexItemStyles>
   );
 };
 

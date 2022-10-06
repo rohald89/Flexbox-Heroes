@@ -1,6 +1,6 @@
 import { fetchAllChallenges } from "../../lib/hygraph";
 
-/* const { getAllChallenges } = require("../../utils/mdx") */
+const { getAllChallenges } = require("../../utils/mdx")
 
 export default function PropertyPage({ challenges }) {
     return (
@@ -18,7 +18,6 @@ export default function PropertyPage({ challenges }) {
 }
 
 export async function getStaticProps() { 
-/*     const challenges = await getAllChallenges(); */
     const challenges = await fetchAllChallenges();
 
   console.log(challenges);
