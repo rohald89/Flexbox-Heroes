@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCorrectAnswer } from '../app/challengeSlice';
@@ -11,7 +11,7 @@ import SolutionPreview from './Previews/SolutionPreview';
 const GameBoard = ({ solution, elements }) => {
   const answerRef = useRef();
   const solutionRef = useRef();
-  const { answer, correctAnswer } = useSelector((state) => state.challenge);
+  const { answer } = useSelector((state) => state.challenge);
   const debouncedAnswer = useDebounce(answer, 200);
   const dispatch = useDispatch();
 
