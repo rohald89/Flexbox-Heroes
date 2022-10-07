@@ -1,19 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Tabs from '@radix-ui/react-tabs';
 import Dropdown from '../../components/Dropdown';
 import PageWrapper from '../../styles/PageWrapper';
-import { changeProperty } from '../../app/playgroundSlice';
+import { changeProperty, changeFlexItemProperty } from '../../app/playgroundSlice';
 import PlaygroundPreview from '../../components/Previews/PlaygroundPreview';
 import PreviewWrapper from '../../components/Previews/PreviewWrapper';
 import { TabsList, TabsRoot, TabsTrigger } from '../../styles/TabStyles';
-
+import { setActiveTab } from '../../app/playgroundSlice';
 
 export default function PlaygroundPage() {
-  const { styles, flexItems } = useSelector(state => state.playground);
+  const { activeTab, styles, flexItems } = useSelector(state => state.playground);
   const dispatch = useDispatch();
-
+console.log(activeTab);
   return (
     <div>
       <h1>Playground</h1>
@@ -21,13 +20,20 @@ export default function PlaygroundPage() {
         <div className="left">
           Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint
           cillum sint consectetur cupidatat.
-            <TabsRoot defaultValue='container'>
+            <TabsRoot
+              defaultValue='container'
+              value={activeTab}
+              onValueChange={
+                (value) => dispatch(setActiveTab(value))
+              }
+            >
                 <TabsList aria-label='element tabs'>
                     <TabsTrigger value="container">.container</TabsTrigger>
                     {
-                        flexItems.map((item, index) => (
-                            <TabsTrigger key={index} value={`item-${index}`}>.item-{index}</TabsTrigger>
-                        ))
+                        flexItems.map((item, index) => {
+                            console.log(item);
+                            return <TabsTrigger key={index} value={index}>{index + 1}</TabsTrigger>
+                        })
                     }
                 </TabsList>
                 <Tabs.Content value="container">
@@ -52,24 +58,24 @@ export default function PlaygroundPage() {
                 </Tabs.Content>
                 {
                     flexItems.map((item, index) => (
-                        <Tabs.Content key={index} value={`item-${index}`}>
+                        <Tabs.Content key={index} value={index}>
                             <Dropdown
                                 label="flex-grow"
                                 options={['0', '1']}
                                 value={item.flexGrow}
-                                onChange={(value) => dispatch(changeProperty({ property: 'flexGrow', value, index }))}
+                                onChange={(value) => dispatch(changeFlexItemProperty({ property: 'flexGrow', value, index }))}
                             />
                             <Dropdown
                                 label="flex-shrink"
                                 options={['0', '1']}
                                 value={item.flexShrink}
-                                onChange={(value) => dispatch(changeProperty({ property: 'flexShrink', value, index }))}
+                                onChange={(value) => dispatch(changeFlexItemProperty({ property: 'flexShrink', value, index }))}
                             />
                             <Dropdown
                                 label="flex-basis"
                                 options={['auto', '0']}
                                 value={item.flexBasis}
-                                onChange={(value) => dispatch(changeProperty({ property: 'flexBasis', value, index }))}
+                                onChange={(value) => dispatch(changeFlexItemProperty({ property: 'flexBasis', value, index }))}
                             />
                         </Tabs.Content>
                     ))

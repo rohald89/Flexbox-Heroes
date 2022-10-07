@@ -2,7 +2,7 @@ import FlexItemStyles from "../styles/FlexItemStyles";
 
 const FlexItem = ({ children, ...props }) => {
   return (
-    <FlexItemStyles {...props} >  
+    <FlexItemStyles {...props} >
       {children}
     </FlexItemStyles>
   );

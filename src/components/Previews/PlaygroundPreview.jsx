@@ -17,7 +17,7 @@ const PlaygroundPreview = () => {
     <PlayGroundBoard className="container" style={styles}>
         {
             flexItems.map((item, index) => (
-                <FlexItem key={index} color={item.color}>{item.content}</FlexItem>
+                <FlexItem key={index} color={item.color} style={item.styles}>{item.content}</FlexItem>
             ))
         }
     </PlayGroundBoard>

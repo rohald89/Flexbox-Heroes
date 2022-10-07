@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  activeTab: 'container',
   answer: '',
   styles: {
     justifyContent: 'flex-start',
@@ -9,7 +10,6 @@ const initialState = {
   },
   flexItems: [
     {
-        id: 1,
         color: 'red',
         content: 'Item 1',
         styles: {
@@ -21,7 +21,6 @@ const initialState = {
         },
     },
     {
-        id: 2,
         color: 'green',
         content: 'Item 2',
         styles: {
@@ -39,13 +38,20 @@ export const playgroundSlice = createSlice({
   name: 'playground',
   initialState,
   reducers: {
+    setActiveTab: (state, action) => {
+        state.activeTab = action.payload;
+    },
     changeProperty: (state, action) => {
         const { property, value } = action.payload;
         state.styles[property] = value;
     },
+    changeFlexItemProperty: (state, action) => {
+        const { property, value, index } = action.payload;
+        state.flexItems[index].styles[property] = value;
+    }
   },
 });
 
-export const { changeProperty } = playgroundSlice.actions;
+export const { setActiveTab, changeProperty, changeFlexItemProperty } = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;
