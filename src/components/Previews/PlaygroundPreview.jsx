@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setActiveTab } from "../../app/playgroundSlice";
 import FlexItem from "../FlexItem";
 
 const PlayGroundBoard = styled.div`
@@ -12,12 +13,22 @@ const PlayGroundBoard = styled.div`
 `
 
 const PlaygroundPreview = () => {
-  const { styles, flexItems } = useSelector(state => state.playground);
+  const { activeTab, styles, flexItems } = useSelector(state => state.playground);
+  const dispatch = useDispatch();
+
   return (
     <PlayGroundBoard className="container" style={styles}>
         {
             flexItems.map((item, index) => (
-                <FlexItem key={index} color={item.color} style={item.styles}>{item.content}</FlexItem>
+                <FlexItem
+                  key={index}
+                  active={index === activeTab}
+                  color={item.color}
+                  style={item.styles}
+                  onClick={() => dispatch(setActiveTab(index))}
+                >
+                    {item.content}
+                </FlexItem>
             ))
         }
     </PlayGroundBoard>

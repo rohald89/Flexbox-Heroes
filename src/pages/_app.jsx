@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
   background-color: #c9d5e3;
+  overflow: hidden;
 }
 
 *, *:before, *:after {
@@ -16,6 +17,7 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
 }
 `;
 
