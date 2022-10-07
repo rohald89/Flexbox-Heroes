@@ -2,19 +2,18 @@ import * as Select from '@radix-ui/react-select';
 import {
   CheckIcon,
   ChevronDownIcon,
-  ChevronUpIcon,
 } from '@radix-ui/react-icons';
-import { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const StyledTrigger = styled(Select.Trigger)`
   all: unset;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   border-radius: 4px;
   padding: 0 15px;
   height: 35px;
+  min-width: 8rem;
   gap: 5px;
   background-color: white;
   color: darkgreen;
@@ -60,7 +59,7 @@ const StyledItem = styled(Select.Item)`
   height: 1.5rem;
   padding: 0 35px 0 25px;
   position: relative;
- 
+
   &:focus {
     background-color: purple;
     color: white;
@@ -75,22 +74,22 @@ const StyledItemIndicator = styled(Select.ItemIndicator)`
   align-items: center;
   justify-content: center;
 `;
-const Dropdown = ({ label, options }) => {
+const Dropdown = ({ label, options, value, onChange }) => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <p>{label}</p>
       <div>
-        <Select.Root>
+        <Select.Root value={value} onValueChange={onChange}>
           <StyledTrigger>
-            <Select.Value placeholder="Pick an option" />
+            <Select.Value placeholder="Pick an option"/>
             <StyledIcon>
               <ChevronDownIcon />
             </StyledIcon>
           </StyledTrigger>
           <Content>
             <StyledViewport>
-              {options.map((option) => (
-                <StyledItem value={option}>
+              {options.map((option, i) => (
+                <StyledItem key={i} value={option}>
                   <Select.ItemText>{option}</Select.ItemText>
                   <StyledItemIndicator>
                     <CheckIcon />

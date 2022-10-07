@@ -3,28 +3,49 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   answer: '',
   styles: {
-    justifyContent: '',
-    alignItems: '',
-    flexDirection: '',
-  }
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+  },
+  flexItems: [
+    {
+        id: 1,
+        color: 'red',
+        content: 'Item 1',
+        styles: {
+            order: 1,
+            flexGrow: 0,
+            flexShrink: 1,
+            flexBasis: 'auto',
+            alignSelf: 'auto',
+        },
+    },
+    {
+        id: 2,
+        color: 'green',
+        content: 'Item 2',
+        styles: {
+            order: 2,
+            flexGrow: 0,
+            flexShrink: 1,
+            flexBasis: 'auto',
+            alignSelf: 'auto',
+        },
+    },
+  ]
 };
 
 export const playgroundSlice = createSlice({
   name: 'playground',
   initialState,
   reducers: {
-    /* setActiveChallenge: (state, action) => {
-      state.activeChallenge = action.payload;
+    changeProperty: (state, action) => {
+        const { property, value } = action.payload;
+        state.styles[property] = value;
     },
-    setCorrectAnswer: (state, action) => {
-      state.correctAnswer = action.payload;
-    },
-    setAnswer: (state, action) => {
-      state.answer = action.payload;
-    }, */
   },
 });
 
-export const {} = playgroundSlice.actions;
+export const { changeProperty } = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;

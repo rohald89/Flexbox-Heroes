@@ -3,8 +3,10 @@ import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCorrectAnswer } from '../app/challengeSlice';
 import { useDebounce } from '../hooks/useDebounce';
-import BoardWrapper from '../styles/BoardWrapper';
 import FlexItem from './FlexItem';
+import AnswerPreview from './Previews/AnswerPreview';
+import PreviewWrapper from './Previews/PreviewWrapper';
+import SolutionPreview from './Previews/SolutionPreview';
 
 const GameBoard = ({ solution, elements }) => {
   const answerRef = useRef();
@@ -27,7 +29,7 @@ const GameBoard = ({ solution, elements }) => {
     for(let i = 0; i < answers.length; i++) {
       console.log(answers[i].offsetWidth, solutions[i].offsetHeight)
       if(
-        answers[i].offsetLeft === solutions[i].offsetLeft 
+        answers[i].offsetLeft === solutions[i].offsetLeft
           && answers[i].offsetTop === solutions[i].offsetTop
           && answers[i].offsetWidth === solutions[i].offsetWidth
           && answers[i].offsetHeight === solutions[i].offsetHeight
@@ -40,26 +42,26 @@ const GameBoard = ({ solution, elements }) => {
     return true
   }
   return (
-    <BoardWrapper>
-      <div id="answer" ref={answerRef}>
+    <PreviewWrapper>
+      <AnswerPreview answerRef={answerRef}>
         {elements.map((el, i) => (
-          <FlexItem 
-            key={el.id} 
-            color={el.color.hex} 
-            type={'answer'} 
+          <FlexItem
+            key={el.id}
+            color={el.color.hex}
+            type={'answer'}
           />
         ))}
-      </div>
-      <div id="solution" ref={solutionRef} style={solution}>
+      </AnswerPreview>
+      <SolutionPreview solutionRef={solutionRef} solution={solution}>
         {elements.map((el, i) => (
-          <FlexItem 
-            key={el.id} 
-            color={el.color.hex} 
-            type={'solution'} 
+          <FlexItem
+            key={el.id}
+            color={el.color.hex}
+            type={'solution'}
           />
         ))}
-      </div>
-    </BoardWrapper>
+      </SolutionPreview>
+    </PreviewWrapper>
   );
 };
 

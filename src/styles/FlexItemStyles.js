@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const FlexItemStyles = styled.div`
-  background-color: ${(props) => (props.type === 'answer' ? props.color : '')};
+  background-color: ${(props) => (props.type === 'solution' ? 'transparent' : props.color)};
   min-width: 50px;
   min-height: 50px;
   margin: 4px;
