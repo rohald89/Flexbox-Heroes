@@ -27,6 +27,7 @@ const PreviewWrapper = ({ children }) => {
     } else {
         dispatch(setOverFlow(false));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children]);
   return (
     <StyledPreviewWrapper ref={wrapperRef}>{children}</StyledPreviewWrapper>
