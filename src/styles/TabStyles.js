@@ -47,7 +47,7 @@ const StyledTabContent = styled(Tabs.Content)`
     padding: 15px;
     background-color: #2F343F;
     border-radius: 0 0 5px 5px;
-    color: #94BECE;
+    color: #D9DEE8;
 `;
 
 export {

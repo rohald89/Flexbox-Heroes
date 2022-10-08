@@ -14,6 +14,7 @@ const StyledTrigger = styled(Select.Trigger)`
   background-color: #5B687C;
   color: #D9DEE8;
   user-select: none;
+
   &:hover {
     background-color: #5B687C;
   }

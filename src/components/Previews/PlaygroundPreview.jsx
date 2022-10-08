@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import { useSelector, useDispatch } from "react-redux";
-import { setActiveTab } from "../../app/playgroundSlice";
+import { removeFlexItem, setActiveTab } from "../../app/playgroundSlice";
 import FlexItem from "../FlexItem";
+import { CrossCircledIcon } from "@radix-ui/react-icons";
 
 const PlayGroundBoard = styled.div`
     display: flex;
@@ -24,9 +25,15 @@ const PlaygroundPreview = () => {
                   key={index}
                   active={index === activeTab}
                   color={item.color}
-                  style={item.styles}
+                  style={{ border: 'none', ...item.styles }}
                   onClick={() => dispatch(setActiveTab(index))}
                 >
+                    <button
+                        className="delete"
+                        onClick={() => dispatch(removeFlexItem({index}))}
+                    >
+                        <CrossCircledIcon />
+                    </button>
                     {item.content}
                 </FlexItem>
             ))

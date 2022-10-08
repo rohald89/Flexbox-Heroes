@@ -1,4 +1,7 @@
+import { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components"
+import { setOverFlow } from "../../app/playgroundSlice";
 
 const StyledPreviewWrapper = styled.div`
   position: relative;
@@ -11,8 +14,22 @@ const StyledPreviewWrapper = styled.div`
 `;
 
 const PreviewWrapper = ({ children }) => {
+  const wrapperRef = useRef();
+  const dispatch = useDispatch();
+
+  const isOverFlowing = () => {
+    const { scrollHeight, clientHeight, scrollWidth, clientWidth } = wrapperRef.current;
+    return scrollHeight > clientHeight || scrollWidth > clientWidth;
+  }
+  useEffect(() => {
+    if (isOverFlowing()) {
+        dispatch(setOverFlow(true));
+    } else {
+        dispatch(setOverFlow(false));
+    }
+  }, [children]);
   return (
-    <StyledPreviewWrapper>{children}</StyledPreviewWrapper>
+    <StyledPreviewWrapper ref={wrapperRef}>{children}</StyledPreviewWrapper>
   )
 }
 export default PreviewWrapper
