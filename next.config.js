@@ -16,6 +16,13 @@ const withMDX = require('@next/mdx')({
     },
   })
   module.exports = withMDX({
+    webpack(config) {
+        config.resolve.fallback = {
+            ...config.resolve.fallback,
+            fs: false,
+    };
+    return config;
+},
     // Append the default value with md extensions
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   })
