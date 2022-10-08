@@ -25,7 +25,7 @@ const PlaygroundPreview = () => {
                   key={index}
                   active={index === activeTab}
                   color={item.color}
-                  style={{ border: 'none', ...item.styles }}
+                  style={{ border: 'none', cursor: 'pointer', ...item.styles }}
                   onClick={() => dispatch(setActiveTab(index))}
                 >
                     <button

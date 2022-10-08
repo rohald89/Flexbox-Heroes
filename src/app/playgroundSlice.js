@@ -66,7 +66,13 @@ export const playgroundSlice = createSlice({
         });
     },
     removeFlexItem: (state, action) => {
-        state.flexItems.splice(action.payload, 1);
+        const {index} = action.payload;
+        state.flexItems.splice(index, 1);
+        console.log(state.activeTab, index);
+        if(state.activeTab === index ) {
+            // TODO - seems like this is not working
+            state.activeTab = 'container';
+        }
     },
     resetProperty: (state, action) => {
         const { property, index } = action.payload;
@@ -103,7 +109,7 @@ export const playgroundSlice = createSlice({
 }`;
         state.generatedCSS = `${css}\n${flexItems.join('\n')}`;
         state.generatedHTML = `<div class="container">
-    ${state.flexItems.map((item, index) => `<div class="item-${index + 1}">${item.content}</div>`).join('')}
+    ${state.flexItems.map((item, index) => `<div class="item-${index + 1}">${item.content}</div>`).join('\n    ')}
 </div>`;
         console.log(state.generatedCSS);
         console.log(state.generatedHTML);

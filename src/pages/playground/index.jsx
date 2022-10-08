@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Dropdown from '../../components/Dropdown';
 import PageWrapper from '../../styles/PageWrapper';
-import { changeProperty, changeFlexItemProperty, resetProperty, resetFlexItemProperty, resetPlayground, generateCode } from '../../app/playgroundSlice';
+import { changeProperty, changeFlexItemProperty, resetPlayground, generateCode } from '../../app/playgroundSlice';
 import PlaygroundPreview from '../../components/Previews/PlaygroundPreview';
 import PreviewWrapper from '../../components/Previews/PreviewWrapper';
 import { TabsContent, TabsList, TabsRoot, TabsTrigger } from '../../styles/TabStyles';
@@ -10,13 +10,14 @@ import { setActiveTab, addFlexItem } from '../../app/playgroundSlice';
 import { PlusCircledIcon, ResetIcon, CodeIcon } from '@radix-ui/react-icons';
 import PreviewHeader from '../../components/Previews/PreviewHeader';
 import { Button, ButtonContainer } from '../../styles/ButtonStyles';
-import CodeModal from '../../components/CodeModal';
+import Modal from '../../components/Modal';
 import Slider from '../../components/Slider';
 import OverflowWarning from '../../components/OverflowWarning';
-
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight';
+import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 export default function PlaygroundPage() {
-  const { activeTab, styles, flexItems } = useSelector(state => state.playground);
+  const { activeTab, styles, flexItems, generatedCSS, generatedHTML } = useSelector(state => state.playground);
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -26,11 +27,6 @@ export default function PlaygroundPage() {
   const handleReset = () => {
     dispatch(resetPlayground());
   };
-
-  const handleCode = () => {
-    dispatch(generateCode());
-    console.log('code');
-  }
 
 return (
     <div>
@@ -147,8 +143,14 @@ return (
                 <ButtonContainer>
                     <Button aria-label="Reset" onClick={handleReset}><ResetIcon /></Button>
                     <Button aria-label="Add FlexItem" onClick={handleClick}><PlusCircledIcon /></Button>
-                    <Button aria-label="Get CSS" onClick={handleCode}><CodeIcon /></Button>
-                    <CodeModal />
+                    <Modal onOpen={() => dispatch(generateCode())} trigger={<Button aria-label="Generate Code"><CodeIcon /></Button>}>
+                        <SyntaxHighlighter language="htmlbars" showLineNumbers style={nord}>
+                            {generatedHTML}
+                        </SyntaxHighlighter>
+                        <SyntaxHighlighter language="css" showLineNumbers style={nord}>
+                            {generatedCSS}
+                        </SyntaxHighlighter>
+                    </Modal>
                     <OverflowWarning />
                 </ButtonContainer>
             </PreviewHeader>
