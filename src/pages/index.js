@@ -8,8 +8,8 @@ import { fetchAllChallenges } from '../lib/hygraph';
 const MainWrapper = styled.main`
     display: flex;
     padding: 1rem;
-    background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+    background: ${props => props.background};
+    color: ${props => props.text};
 `;
 
 
