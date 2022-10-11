@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Dropdown from '../../components/Dropdown';
@@ -23,8 +24,17 @@ import { Button, ButtonContainer } from '../../styles/ButtonStyles';
 import Modal from '../../components/Modal';
 import Slider from '../../components/Slider';
 import OverflowWarning from '../../components/OverflowWarning';
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight';
-import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+const SyntaxHighlighter = dynamic(
+  () => import('react-syntax-highlighter/dist/esm/default-highlight'),
+  {
+    ssr: false,
+  }
+);
+// TODO styles are currently not being applied
+const nord = dynamic(() => import('react-syntax-highlighter/dist/esm/styles/hljs').nord, {
+  ssr: false,
+});
 
 export default function PlaygroundPage() {
   const { activeTab, styles, flexItems, generatedCSS, generatedHTML } =
@@ -33,6 +43,7 @@ export default function PlaygroundPage() {
 
   const handleClick = () => {
     dispatch(addFlexItem());
+    console.log(nord);
   };
 
   const handleReset = () => {
@@ -235,7 +246,7 @@ export default function PlaygroundPage() {
                 >
                   {generatedHTML}
                 </SyntaxHighlighter>
-                <SyntaxHighlighter language="css" showLineNumbers style={nord}>
+                <SyntaxHighlighter language="css" showLineNumbers style={nord}> 
                   {generatedCSS}
                 </SyntaxHighlighter>
               </Modal>
