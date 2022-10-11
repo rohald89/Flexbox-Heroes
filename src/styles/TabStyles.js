@@ -2,57 +2,60 @@ import * as Tabs from '@radix-ui/react-tabs';
 import styled from 'styled-components';
 
 const StyledRoot = styled(Tabs.Root)`
-    background-color: #2F343F;
-    box-shadow: 0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3),0 -6px 16px -6px rgba(0,0,0,.025);
-    border-radius: 5px;
-    color: white;
-    overflow: hidden;
+  box-shadow: ${({ theme }) => theme.shadow};
+  border-radius: 5px;
+  color: white;
+  overflow: hidden;
+  transition: box-shadow 400ms ease-in-out;
+  &:hover {
+    box-shadow: ${({ theme }) => theme.shadowHover};
+  }
 `;
 
 const StyledTabList = styled(Tabs.List)`
-    background-color: #3C4251;
-    border-radius: 5px 5px 0 0;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+  background-color: ${({theme}) => theme.accent};
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
 const StyledTrigger = styled(Tabs.Trigger)`
-    all: unset;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 15px;
-    height: 35px;
-    gap: 5px;
-    background-color: transparent;
-    color: #D9DEE8;
-    user-select: none;
-    border-top: 5px solid transparent;
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  height: 35px;
+  gap: 5px;
+  background-color: transparent;
+  color: ${({theme}) => theme.text};
+  user-select: none;
+  border-top: 5px solid transparent;
 
-    &:hover {
-        background-color: #5B687C;
-    }
-    &:focus {
-        box-shadow: 0 0 0 2px #D9DEE8;
-    }
-    &[data-state="active"] {
-        background-color: #2F343F;
-        border-radius: 5px 5px 0 0;
-        border-top: 5px solid #6580A9;
-    }
+  &:hover {
+    background-color: ${({theme}) => theme.accentHover};
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px #d9dee8;
+  }
+  &[data-state='active'] {
+    background-color: ${({theme}) => theme.background};
+    border-radius: 5px 5px 0 0;
+    border-top: 5px solid #6580a9;
+  }
 `;
 
 const StyledTabContent = styled(Tabs.Content)`
-    padding: 15px;
-    background-color: #2F343F;
-    border-radius: 0 0 5px 5px;
-    color: #D9DEE8;
+  padding: 15px;
+  background-color: ${({theme}) => theme.background};
+  border-radius: 0 0 5px 5px;
+  color: ${({theme}) => theme.text};
 `;
 
 export {
-    StyledRoot as TabsRoot,
-    StyledTabList as TabsList,
-    StyledTrigger as TabsTrigger,
-    StyledTabContent as TabsContent,
+  StyledRoot as TabsRoot,
+  StyledTabList as TabsList,
+  StyledTrigger as TabsTrigger,
+  StyledTabContent as TabsContent,
 };

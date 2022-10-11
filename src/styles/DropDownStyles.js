@@ -11,25 +11,25 @@ const StyledTrigger = styled(Select.Trigger)`
   height: 35px;
   min-width: 8rem;
   gap: 5px;
-  background-color: #5B687C;
-  color: #D9DEE8;
+  background-color: ${({theme}) => theme.accent};
+  color: ${({theme}) => theme.text};
   user-select: none;
 
   &:hover {
-    background-color: #5B687C;
+    background-color: ${({theme}) => theme.accentHover};
   }
   &:focus {
-    box-shadow: 0 0 0 2px #98BABB;
+    box-shadow: 0 0 0 2px ${({theme}) => theme.nord10};
   }
 `;
 
 const StyledIcon = styled(Select.SelectIcon)`
-  color: #D9DEE8;
+  color: inherit;
 `;
 
 const StyledContent = styled(Select.Content)`
   overflow: hidden;
-  background-color: #404757;
+  background-color: ${({theme}) => theme.accent};
   border-radius: 6px;
   box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
     0px 10px 20px -15px rgba(22, 23, 24, 0.2);
@@ -49,7 +49,6 @@ function Content({ children, ...props }) {
 
 const StyledItem = styled(Select.Item)`
   all: unset;
-  color: #D9DEE8;
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -58,8 +57,7 @@ const StyledItem = styled(Select.Item)`
   position: relative;
 
   &:focus {
-    background-color: #5B687C;
-    color: white;
+    background-color: ${({theme}) => theme.accentHover};
   }
 `;
 
