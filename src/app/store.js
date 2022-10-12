@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import challengeReducer from "./challengeSlice";
 import playgroundReducer from "./playgroundSlice";
+import userReducer from "./userSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
@@ -13,6 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   challenge: challengeReducer,
   playground: playgroundReducer,
+  user: userReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

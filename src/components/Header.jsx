@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import ThemeToggle from './ThemeToggle';
 
 const HeaderStyles = styled.header`
   display: flex;
@@ -13,6 +14,8 @@ const HeaderStyles = styled.header`
 `;
 
 const NavStyles = styled.nav`
+  display: flex;
+  align-items: center;
   ul {
     font-family: 'Rubik', 'sans-serif';
     line-height: 1.5;
@@ -54,6 +57,7 @@ const Header = () => {
             <Link href="playground">Playground</Link>
           </li>
         </ul>
+        <ThemeToggle />
       </NavStyles>
     </HeaderStyles>
   );
