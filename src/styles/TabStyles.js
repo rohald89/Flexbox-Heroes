@@ -37,12 +37,12 @@ const StyledTrigger = styled(Tabs.Trigger)`
     background-color: ${({theme}) => theme.accentHover};
   }
   &:focus {
-    box-shadow: 0 0 0 2px #d9dee8;
+    box-shadow: 0 0 0 2px ${({theme}) => theme.focus};
   }
   &[data-state='active'] {
     background-color: ${({theme}) => theme.background};
     border-radius: 5px 5px 0 0;
-    border-top: 5px solid #6580a9;
+    border-top: 5px solid ${({theme}) => theme.focus};
   }
 `;
 

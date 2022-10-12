@@ -15,6 +15,9 @@ const StyledToggle = styled(TogglePrimative.Root)`
   align-items: center;
   justify-content: center;
   box-shadow: ${({ theme }) => theme.shadow};
+  &:focus {
+    box-shadow: 0 0 0 2px ${({theme}) => theme.focus}
+  }
 `;
 
 const ThemeToggle = () => {

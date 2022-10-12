@@ -9,10 +9,10 @@ const StyledPreviewWrapper = styled.div`
   height: 100%;
   border-radius: 0 0 6px 6px;
   box-shadow: ${({theme}) => theme.shadow };
-  background-color: #2e3440;
-  color: #D9DEE8;
+  background-color: ${({theme}) => theme.background};
+  color: ${({theme}) => theme.text};
   transition: box-shadow 400ms ease-in-out;
-  &:hover {
+  &:hover 
       box-shadow: ${({theme}) => theme.shadowHover };
     }
 `;

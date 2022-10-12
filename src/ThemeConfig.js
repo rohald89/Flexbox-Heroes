@@ -26,6 +26,7 @@ export const lightTheme = {
   shadowHover: 'rgba(184, 194, 215, 0.35) 0px 10px 20px 2px',
   accentHover: '#E8ECF1',
   accent: nord.nord4,
+  focus: '#6580A9',
   ...nord
 }
 
@@ -37,6 +38,7 @@ export const darkTheme = {
   shadowHover: 'rgba(15, 17, 21, 0.2) 0px 10px 20px 2px',
   accentHover: nord.nord1,
   accent: nord.nord2,
+  focus: '#6580A9',
   ...nord
 }
 
