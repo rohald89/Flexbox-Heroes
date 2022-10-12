@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Dropdown from '../../components/Dropdown';
@@ -55,6 +56,15 @@ export default function PlaygroundPage() {
 
   return (
     <PageWrapper>
+      <Head>
+        <title>Flexbox Heroes | Playground</title>
+        <meta name="title" content="Flexbox Heroes"/>
+        <meta name="description" content="Your one stop shop for everything Flexbox CSS properties"/>
+        <meta name="keywords" content="css, css3, flexbox, grid, layouts, html, layout, playground, challenges, game, learn, education, visualizer, interactive"/>
+        <meta name="robots" content="index, follow"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="language" content="English"/>
+      </Head>      
       <div className="left">
         <h1>Playground</h1>
         Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint
@@ -125,6 +135,7 @@ export default function PlaygroundPage() {
               label="gap"
               min={0}
               max={100}
+              aria-label="gap in pixels"
               // TODO Add dropdown for px, em, rem, % values
               value={[`${styles.gap.split('px')[0]}`]}
               onValueChange={(value) =>
@@ -189,6 +200,7 @@ export default function PlaygroundPage() {
                 label="width"
                 min={0}
                 max={200}
+                aria-label="width in pixels"
                 // TODO Add dropdown for px, em, rem, % values
                 value={[`${item.styles.width.split('px')[0]}`]}
                 onValueChange={(value) =>
@@ -206,6 +218,7 @@ export default function PlaygroundPage() {
                 label="height"
                 min={0}
                 max={200}
+                aria-label="height in pixels"
                 // TODO Add dropdown for px, em, rem, % values
                 value={[`${item.styles.height.split('px')[0] || 0}`]}
                 onValueChange={(value) =>

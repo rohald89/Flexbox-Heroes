@@ -16,6 +16,10 @@ const withMDX = require('@next/mdx')({
     },
   })
   module.exports = withMDX({
+    i18n: {
+      locales: ["en"],
+      defaultLocale: "en",
+    },
     webpack(config) {
         config.resolve.fallback = {
             ...config.resolve.fallback,

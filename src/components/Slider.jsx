@@ -12,13 +12,13 @@ const Slider = ({ label, index, ...props }) => {
       <p>{label}</p>
       <div style={{marginLeft: 'auto', marginRight: '1rem'}}>
         <SliderRoot {...props}>
-            <SliderTrack>
+            <SliderTrack >
                 <SliderRange />
             </SliderTrack>
-            <SliderThumb />
+            <SliderThumb aria-label={`${label} in pixels`} />
         </SliderRoot>
       </div>
-      <Button onClick={() => dispatch(resetProperty({ property: label, index }))}><ResetIcon /></Button>
+      <Button aria-label="Reset Property" onClick={() => dispatch(resetProperty({ property: label, index }))}><ResetIcon /></Button>
     </div>
   )
 }

@@ -17,7 +17,7 @@ const Dropdown = ({ index, label, property, options, value, onChange }) => {
       <p>{label}</p>
       <div style={{marginLeft: 'auto', marginRight: '1rem'}}>
         <Select.Root value={value} onValueChange={onChange}>
-          <StyledTrigger>
+          <StyledTrigger aria-label={label}>
             <Select.Value placeholder="Pick an option"/>
             <StyledIcon>
               <ChevronDownIcon />
@@ -37,7 +37,7 @@ const Dropdown = ({ index, label, property, options, value, onChange }) => {
           </Content>
         </Select.Root>
       </div>
-      <Button onClick={() => dispatch(resetProperty({ property, index }))}><ResetIcon /></Button>
+      <Button aria-label="Reset Property" onClick={() => dispatch(resetProperty({ property, index }))}><ResetIcon /></Button>
     </div>
   );
 };
