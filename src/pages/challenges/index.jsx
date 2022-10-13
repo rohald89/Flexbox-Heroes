@@ -1,10 +1,11 @@
 import { fetchAllChallenges } from "../../lib/hygraph";
+import PageWrapper from "../../styles/PageWrapper";
 
 const { getAllChallenges } = require("../../utils/mdx")
 
 export default function PropertyPage({ challenges }) {
     return (
-        <div>
+        <PageWrapper>
             <h1>Challenges</h1>
             <ul>
                 {challenges.map((challenge) => (
@@ -13,7 +14,7 @@ export default function PropertyPage({ challenges }) {
                     </li>
                 ))}
             </ul>
-        </div>
+        </PageWrapper>
     )
 }
 

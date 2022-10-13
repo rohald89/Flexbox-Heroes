@@ -6,7 +6,6 @@ import { toggleTheme } from '../app/userSlice';
 
 const StyledToggle = styled(TogglePrimative.Root)`
   all: unset;
-  background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.color};
   height: 35px;
   width: 35px;
@@ -14,9 +13,14 @@ const StyledToggle = styled(TogglePrimative.Root)`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: ${({ theme }) => theme.shadow};
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: ${({ theme }) => theme.shadow};
+    background-color: ${({ theme }) => theme.accentHover};
+  }
   &:focus {
-    box-shadow: 0 0 0 2px ${({theme}) => theme.focus}
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.focus};
   }
 `;
 
@@ -25,7 +29,12 @@ const ThemeToggle = () => {
   const dispatch = useDispatch();
 
   return (
-    <StyledToggle aria-label="Toggle Darkmode" onPressedChange={() => dispatch(toggleTheme(activeTheme === 'light' ? 'dark' : 'light'))}>
+    <StyledToggle
+      aria-label="Toggle Darkmode"
+      onPressedChange={() =>
+        dispatch(toggleTheme(activeTheme === 'light' ? 'dark' : 'light'))
+      }
+    >
       {activeTheme == 'dark' ? <SunIcon /> : <MoonIcon />}
     </StyledToggle>
   );

@@ -20,7 +20,8 @@ const pulse = keyframes`
 `;
 
 const OverFlowStyles = styled.button`
-    background-color: #4a5b763a;
+color: ${({theme}) => theme.text};
+    background-color: ${({theme}) => theme.background};
     border-radius: 3px;
     display: inline-flex;
     align-items: center;

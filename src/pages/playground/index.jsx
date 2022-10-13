@@ -25,20 +25,9 @@ import { Button, ButtonContainer } from '../../styles/ButtonStyles';
 import Modal from '../../components/Modal';
 import Slider from '../../components/Slider';
 import OverflowWarning from '../../components/OverflowWarning';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter/dist/cjs/';
+import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'; 
 
-const SyntaxHighlighter = dynamic(
-  () => import('react-syntax-highlighter/dist/esm/default-highlight'),
-  {
-    ssr: false,
-  }
-);
-// TODO styles are currently not being applied
-const nord = dynamic(
-  () => import('react-syntax-highlighter/dist/esm/styles/hljs').nord,
-  {
-    ssr: false,
-  }
-);
 
 export default function PlaygroundPage() {
   const { activeTab, styles, flexItems, generatedCSS, generatedHTML } =
@@ -58,13 +47,19 @@ export default function PlaygroundPage() {
     <PageWrapper>
       <Head>
         <title>Flexbox Heroes | Playground</title>
-        <meta name="title" content="Flexbox Heroes"/>
-        <meta name="description" content="Your one stop shop for everything Flexbox CSS properties"/>
-        <meta name="keywords" content="css, css3, flexbox, grid, layouts, html, layout, playground, challenges, game, learn, education, visualizer, interactive"/>
-        <meta name="robots" content="index, follow"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="language" content="English"/>
-      </Head>      
+        <meta name="title" content="Flexbox Heroes" />
+        <meta
+          name="description"
+          content="Your one stop shop for everything Flexbox CSS properties"
+        />
+        <meta
+          name="keywords"
+          content="css, css3, flexbox, grid, layouts, html, layout, playground, challenges, game, learn, education, visualizer, interactive"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+      </Head>
       <div className="left">
         <h1>Playground</h1>
         Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint
@@ -253,7 +248,7 @@ export default function PlaygroundPage() {
               }
             >
               <SyntaxHighlighter
-                language="htmlbars"
+                language="html"
                 showLineNumbers
                 style={nord}
               >

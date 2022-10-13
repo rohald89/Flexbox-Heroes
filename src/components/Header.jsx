@@ -10,7 +10,7 @@ const HeaderStyles = styled.header`
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
-  border-bottom: 2px solid ${({theme}) => theme.border };
+  border-bottom: 2px solid ${({ theme }) => theme.border};
 `;
 
 const NavStyles = styled.nav`
@@ -37,8 +37,10 @@ const NavStyles = styled.nav`
     font-size: 1.125rem;
     border-radius: 0.25rem;
     padding: 0.25rem 0.5rem;
+  transition: background-color .3s ease, box-shadow .3s ease;
     &:hover {
       background-color: ${({ theme }) => theme.accentHover};
+      box-shadow: ${({ theme }) => theme.shadow};
     }
   }
 `;

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const nord = {
   nord0: '#2e3440',
@@ -17,7 +17,7 @@ const nord = {
   nord13: '#EBCB8B',
   nord14: '#A3BE8C',
   nord15: '#B48EAD',
-}
+};
 export const lightTheme = {
   body: '#F2F4F8',
   text: nord.nord3,
@@ -27,8 +27,8 @@ export const lightTheme = {
   accentHover: '#E8ECF1',
   accent: nord.nord4,
   focus: '#6580A9',
-  ...nord
-}
+  ...nord,
+};
 
 export const darkTheme = {
   body: '#252932',
@@ -39,8 +39,8 @@ export const darkTheme = {
   accentHover: nord.nord1,
   accent: nord.nord2,
   focus: '#6580A9',
-  ...nord
-}
+  ...nord,
+};
 
 export const GlobalStyles = createGlobalStyle`
 html {
@@ -55,9 +55,10 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: ${({theme}) => theme.body };
-  color: ${({theme}) => theme.text };
+  transition: background 3s ease,
+color 3s ease;
+  background: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
   font-family: 'Rubik', sans-serif;
 }
 `;
-
