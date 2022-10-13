@@ -1,8 +1,9 @@
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Dropdown from '../../components/Dropdown';
+import CodeBlock from '../../components/CodeBlock/CodeBlock';
+import ClipboardCopy from '../../components/ClipboardCopy';
 import PageWrapper from '../../styles/PageWrapper';
 import {
   changeProperty,
@@ -25,8 +26,6 @@ import { Button, ButtonContainer } from '../../styles/ButtonStyles';
 import Modal from '../../components/Modal';
 import Slider from '../../components/Slider';
 import OverflowWarning from '../../components/OverflowWarning';
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter/dist/cjs/';
-import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'; 
 
 
 export default function PlaygroundPage() {
@@ -36,7 +35,6 @@ export default function PlaygroundPage() {
 
   const handleClick = () => {
     dispatch(addFlexItem());
-    console.log(nord);
   };
 
   const handleReset = () => {
@@ -247,16 +245,8 @@ export default function PlaygroundPage() {
                 </Button>
               }
             >
-              <SyntaxHighlighter
-                language="html"
-                showLineNumbers
-                style={nord}
-              >
-                {generatedHTML}
-              </SyntaxHighlighter>
-              <SyntaxHighlighter language="css" showLineNumbers style={nord}>
-                {generatedCSS}
-              </SyntaxHighlighter>
+              <CodeBlock language="html" code={generatedHTML} />
+              <CodeBlock language="css" code={generatedCSS} />
             </Modal>
             <OverflowWarning />
           </ButtonContainer>

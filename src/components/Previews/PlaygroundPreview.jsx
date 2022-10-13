@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFlexItem, setActiveTab } from "../../app/playgroundSlice";
 import FlexItem from "../FlexItem";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
-
 const PlayGroundBoard = styled.div`
     display: flex;
     position: absolute;
+    transition: all .5s ease;
     top: 0;
     left: 0;
     width: 100%;

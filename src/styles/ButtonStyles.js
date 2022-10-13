@@ -19,7 +19,7 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   padding: 0.2rem 0.35rem;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.3s ease, box-shadow .3s ease, color .3s ease;
   outline: none;
   &:hover {
       background-color: ${({theme}) => theme.accentHover};

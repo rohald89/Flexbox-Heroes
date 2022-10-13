@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const FlexItemStyles = styled.div`
   position: relative;
+  transition: all .5s ease;
   background-color: ${(props) =>
     props.type === 'solution' ? 'transparent' : props.type === 'answer' ? props.color : props.theme.accent};
   display: inline-flex;

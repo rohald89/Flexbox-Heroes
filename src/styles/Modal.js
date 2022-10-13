@@ -2,12 +2,13 @@ import styled from "styled-components";
 import * as Dialog from '@radix-ui/react-dialog';
 
 const StyledDialogContent = styled(Dialog.Content)`
-    background-color: white;
+    background-color: ${({theme}) => theme.body};
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
+    padding-top: 50px;
     border-radius: 6px;
     box-shadow: 0 13px 27px -5px rgba(50,50,93,.25),
     0 8px 16px -8px rgba(0,0,0,.3),
@@ -17,6 +18,10 @@ const StyledDialogContent = styled(Dialog.Content)`
     min-height: 300px;
     max-height: 80vh;
     overflow: auto;
+`;
+
+const StyledCloseButton = styled(Dialog.Close)`
+  background-color: tomato;
 `;
 
 const StyledOverlay = styled(Dialog.Overlay)`
@@ -31,4 +36,5 @@ const StyledOverlay = styled(Dialog.Overlay)`
     justify-content: center;
 `;
 
-export { StyledDialogContent, StyledOverlay };
+export { StyledDialogContent, StyledOverlay, StyledCloseButton };
+

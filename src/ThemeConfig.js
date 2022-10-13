@@ -55,8 +55,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  transition: background 3s ease,
-color 3s ease;
+  transition: background .3s ease,
+color .3s ease;
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
   font-family: 'Rubik', sans-serif;
