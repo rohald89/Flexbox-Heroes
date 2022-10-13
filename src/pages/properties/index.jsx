@@ -1,8 +1,10 @@
+import PageWrapper from "../../styles/PageWrapper"
+
 const { getAllProperties } = require("../../utils/mdx")
 
 export default function PropertyPage({ properties }) {
     return (
-        <div>
+        <PageWrapper>
             <h1>Properties</h1>
             <ul>
                 {properties.map((property) => (
@@ -11,7 +13,7 @@ export default function PropertyPage({ properties }) {
                     </li>
                 ))}
             </ul>
-        </div>
+        </PageWrapper>
     )
 }
 

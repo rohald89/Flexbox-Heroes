@@ -4,13 +4,13 @@ import { MDXRemote } from "next-mdx-remote"
 import { remarkCodeHike } from "@code-hike/mdx"
 import { CH } from "@code-hike/mdx/dist/components.cjs.js"
 import theme from "shiki/themes/nord.json"
+import PageWrapper from "../../styles/PageWrapper";
 
 export default function PropertyPage({ property }) {
     return (
-        <div>
-            <h1>Hello</h1>
+        <PageWrapper>
             <MDXRemote {...property.source} components={{CH}}/>
-        </div>
+        </PageWrapper>
     )
 }
 

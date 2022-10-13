@@ -16,6 +16,7 @@ const HeaderStyles = styled.header`
 const NavStyles = styled.nav`
   display: flex;
   align-items: center;
+  gap: 2rem;
   ul {
     font-family: 'Rubik', 'sans-serif';
     line-height: 1.5;
@@ -51,10 +52,13 @@ const Header = () => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="challenges">Challenges</Link>
+            <Link href="/properties">Properties</Link>
           </li>
           <li>
-            <Link href="playground">Playground</Link>
+            <Link href="/challenges">Challenges</Link>
+          </li>
+          <li>
+            <Link href="/playground">Playground</Link>
           </li>
         </ul>
         <ThemeToggle />
