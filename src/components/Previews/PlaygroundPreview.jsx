@@ -27,19 +27,10 @@ const PlaygroundPreview = () => {
         {flexItems.map((item, index) => (
           <FlexItem
             key={index}
-            active={index === activeTab}
+            active={(index === activeTab).toString()}
             color={item.color}
             style={{ border: 'none', cursor: 'pointer', ...item.styles }}
             onClick={() => dispatch(setActiveTab(index))}
-            exit={{
-              opacity: 0,
-            }}
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1
-            }}
           >
             <button
               className="delete"

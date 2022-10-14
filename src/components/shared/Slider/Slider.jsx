@@ -1,12 +1,11 @@
 import { ResetIcon } from '@radix-ui/react-icons';
 import { useDispatch } from 'react-redux';
-import { resetProperty } from '../app/playgroundSlice';
-import { Button } from '../styles/ButtonStyles';
-import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from '../styles/Slider';
+import { resetProperty } from '../../../app/playgroundSlice';
+import Button from '../Button';
+import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from './styled';
 
 const Slider = ({ label, index, ...props }) => {
-    const dispatch = useDispatch();
-    console.log(index)
+  const dispatch = useDispatch();
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <p>{label}</p>

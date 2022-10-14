@@ -2,7 +2,7 @@ import * as TogglePrimative from '@radix-ui/react-toggle';
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../app/userSlice';
+import { toggleTheme } from '../../app/userSlice';
 
 const StyledToggle = styled(TogglePrimative.Root)`
   all: unset;

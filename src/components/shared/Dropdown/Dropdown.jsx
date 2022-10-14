@@ -4,9 +4,9 @@ import {
     ChevronDownIcon,
     ResetIcon,
 } from '@radix-ui/react-icons';
-import { StyledTrigger, StyledIcon, Content, StyledViewport, StyledItem, StyledItemIndicator } from './../styles/DropDownStyles';
-import { Button } from '../styles/ButtonStyles';
-import { resetProperty } from '../app/playgroundSlice';
+import { StyledTrigger, StyledIcon, Content, StyledViewport, StyledItem, StyledItemIndicator } from './styled';
+import Button from '../Button';
+import { resetProperty } from '../../../app/playgroundSlice';
 import { useDispatch } from 'react-redux';
 
 const Dropdown = ({ index, label, property, options, value, onChange }) => {

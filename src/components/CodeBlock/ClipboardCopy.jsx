@@ -1,14 +1,8 @@
 import { CheckIcon, ClipboardIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
-import styled from 'styled-components';
-import { copyToClipboard } from '../lib/copyToClipboard';
-import { Button } from '../styles/ButtonStyles';
+import { copyToClipboard } from '../../lib/copyToClipboard';
+import Button from '../shared/Button';
 
-const ClipboardButton = styled(Button)`
-  position: absolute;
-  right: .5rem;
-  top: .5rem;
-`;
 const ClipboardCopy = ({ copyText }) => {
   const [isCopied, setIsCopied] = useState(false);
 
@@ -21,15 +15,14 @@ const ClipboardCopy = ({ copyText }) => {
     }).catch(err => console.log(err));
   }
   return (
-    <ClipboardButton onClick={handleClick}>
+    <Button className="copy-btn" onClick={handleClick}>
       {
       isCopied ? (
         <CheckIcon />
       ) : <ClipboardIcon />
     }
-    </ClipboardButton>
+    </Button>
   )
 }
 
 export default ClipboardCopy;
-

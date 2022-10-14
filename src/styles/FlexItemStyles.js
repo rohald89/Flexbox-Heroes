@@ -14,7 +14,7 @@ const FlexItemStyles = styled(motion.div)`
   border: 4px solid
     ${(props) => (props.type === 'solution' ? props.color : 'transparent')};
   border-radius: 3px;
-  box-shadow: ${(props) => (props.active ? `0 0 0 2px ${props.theme.focus}` : 'none')};
+  box-shadow: ${(props) => (props.active === "true" ? `0 0 0 2px ${props.theme.focus}` : 'none')};
   opacity: ${(props) => (props.type === 'solution' ? 0.8 : 1)};
   color: ${({ theme }) => theme.text};
 

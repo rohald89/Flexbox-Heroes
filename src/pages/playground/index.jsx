@@ -1,45 +1,27 @@
 import Head from 'next/head';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Dropdown from '../../components/Dropdown';
-import CodeBlock from '../../components/CodeBlock/CodeBlock';
-import ClipboardCopy from '../../components/ClipboardCopy';
+import Dropdown from '../../components/shared/Dropdown/Dropdown';
 import PageWrapper from '../../styles/PageWrapper';
 import {
   changeProperty,
   changeFlexItemProperty,
-  resetPlayground,
-  generateCode,
 } from '../../app/playgroundSlice';
-import PlaygroundPreview from '../../components/Previews/PlaygroundPreview';
-import PreviewWrapper from '../../components/Previews/PreviewWrapper';
 import {
   TabsContent,
   TabsList,
   TabsRoot,
   TabsTrigger,
 } from '../../styles/TabStyles';
-import { setActiveTab, addFlexItem } from '../../app/playgroundSlice';
-import { PlusCircledIcon, ResetIcon, CodeIcon } from '@radix-ui/react-icons';
-import PreviewHeader from '../../components/Previews/PreviewHeader';
-import { Button, ButtonContainer } from '../../styles/ButtonStyles';
-import Modal from '../../components/Modal';
-import Slider from '../../components/Slider';
-import OverflowWarning from '../../components/OverflowWarning';
+import { setActiveTab } from '../../app/playgroundSlice';
+import Slider from '../../components/shared/Slider/Slider';
+import Playground from '../../components/Previews/Playground';
 
 
 export default function PlaygroundPage() {
-  const { activeTab, styles, flexItems, generatedCSS, generatedHTML } =
+  const { activeTab, styles, flexItems } =
     useSelector((state) => state.playground);
   const dispatch = useDispatch();
-
-  const handleClick = () => {
-    dispatch(addFlexItem());
-  };
-
-  const handleReset = () => {
-    dispatch(resetPlayground());
-  };
 
   return (
     <PageWrapper>
@@ -229,31 +211,7 @@ export default function PlaygroundPage() {
         </TabsRoot>
       </div>
       <div className="right">
-        <PreviewHeader>
-          <ButtonContainer>
-            <Button aria-label="Reset" onClick={handleReset}>
-              <ResetIcon />
-            </Button>
-            <Button aria-label="Add FlexItem" onClick={handleClick}>
-              <PlusCircledIcon />
-            </Button>
-            <Modal
-              onOpen={() => dispatch(generateCode())}
-              trigger={
-                <Button aria-label="Generate Code">
-                  <CodeIcon />
-                </Button>
-              }
-            >
-              <CodeBlock language="html" code={generatedHTML} />
-              <CodeBlock language="css" code={generatedCSS} />
-            </Modal>
-            <OverflowWarning />
-          </ButtonContainer>
-        </PreviewHeader>
-        <PreviewWrapper>
-          <PlaygroundPreview />
-        </PreviewWrapper>
+        <Playground/>
       </div>
     </PageWrapper>
   );

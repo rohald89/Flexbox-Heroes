@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,6 +45,8 @@ const GameBoard = ({ solution, elements }) => {
   return (
     <PreviewWrapper>
       <AnswerPreview answerRef={answerRef}>
+        {/* TODO animations are not yet working in Challenges */}
+        <AnimatePresence>
         {elements.map((el, i) => (
           <FlexItem
             key={el.id}
@@ -51,6 +54,7 @@ const GameBoard = ({ solution, elements }) => {
             type={'answer'}
           />
         ))}
+        </AnimatePresence>
       </AnswerPreview>
       <SolutionPreview solutionRef={solutionRef} solution={solution}>
         {elements.map((el, i) => (

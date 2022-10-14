@@ -1,9 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
 import styled from 'styled-components';
-import ThemeToggle from './ThemeToggle';
 
-const HeaderStyles = styled.header`
+export const HeaderStyles = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,7 +10,7 @@ const HeaderStyles = styled.header`
   border-bottom: 2px solid ${({ theme }) => theme.border};
 `;
 
-const NavStyles = styled.nav`
+export const NavStyles = styled.nav`
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -44,29 +41,3 @@ const NavStyles = styled.nav`
     }
   }
 `;
-const Header = () => {
-  return (
-    <HeaderStyles>
-      <h1>FlexboxHeroes</h1>
-      <NavStyles>
-        <ul>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/properties">Properties</Link>
-          </li>
-          <li>
-            <Link href="/challenges">Challenges</Link>
-          </li>
-          <li>
-            <Link href="/playground">Playground</Link>
-          </li>
-        </ul>
-        <ThemeToggle />
-      </NavStyles>
-    </HeaderStyles>
-  );
-};
-
-export default Header;
