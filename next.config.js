@@ -30,3 +30,10 @@ const withMDX = require('@next/mdx')({
     // Append the default value with md extensions
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   })
+
+
+  const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+  })
+
+  module.exports = withBundleAnalyzer({ });

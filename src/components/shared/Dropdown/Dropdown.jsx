@@ -8,10 +8,10 @@ import { StyledTrigger, StyledIcon, Content, StyledViewport, StyledItem, StyledI
 import Button from '../Button';
 import { resetProperty } from '../../../app/playgroundSlice';
 import { useDispatch } from 'react-redux';
+import { memo } from 'react';
 
 const Dropdown = ({ index, label, property, options, value, onChange }) => {
   const dispatch = useDispatch();
-
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
       <p>{label}</p>
@@ -42,4 +42,6 @@ const Dropdown = ({ index, label, property, options, value, onChange }) => {
   );
 };
 
-export default Dropdown;
+export default memo(Dropdown, (prevProps, nextProps) => {
+    return prevProps.value === nextProps.value;
+});

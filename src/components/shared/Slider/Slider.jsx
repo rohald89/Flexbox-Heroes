@@ -1,4 +1,5 @@
 import { ResetIcon } from '@radix-ui/react-icons';
+import { memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { resetProperty } from '../../../app/playgroundSlice';
 import Button from '../Button';
@@ -21,4 +22,6 @@ const Slider = ({ label, index, ...props }) => {
     </div>
   )
 }
-export default Slider;
+export default memo(Slider, (prevProps, nextProps) => {
+    return prevProps.value === nextProps.value;
+});

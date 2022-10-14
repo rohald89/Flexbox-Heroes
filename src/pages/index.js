@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import styled from 'styled-components';
 import CodeEditor from '../components/CodeEditor';
-import Description from '../data/challenges/1.mdx';
-import GameBoard from '../components/GameBoard';
-import { fetchAllChallenges } from '../lib/hygraph';
+import GameBoard from '../components/previews/GameBoard';
 
 const MainWrapper = styled.main`
     display: flex;
@@ -30,13 +28,12 @@ export default function Home() {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <MainWrapper >
-            {/* <LeftSide>
-                <Description />
+            <LeftSide>
                 <CodeEditor />
             </LeftSide>
             <div>
                 <GameBoard />
-            </div> */}
+            </div>
         </MainWrapper>
     </div>
   )

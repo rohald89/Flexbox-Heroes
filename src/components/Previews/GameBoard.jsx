@@ -2,12 +2,12 @@ import { AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCorrectAnswer } from '../app/challengeSlice';
-import { useDebounce } from '../hooks/useDebounce';
-import FlexItem from './FlexItem';
-import AnswerPreview from './Previews/AnswerPreview';
-import PreviewWrapper from './Previews/PreviewWrapper';
-import SolutionPreview from './Previews/SolutionPreview';
+import { setCorrectAnswer } from '../../app/challengeSlice';
+import { useDebounce } from '../../hooks/useDebounce';
+import FlexItem from '../FlexItem';
+import AnswerPreview from './AnswerPreview';
+import PreviewWrapper from './PreviewWrapper';
+import SolutionPreview from './SolutionPreview';
 
 const GameBoard = ({ solution, elements }) => {
   const answerRef = useRef();
