@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import styled from "styled-components"
 
 const StyledAnswerPreview = styled.div`
@@ -12,7 +13,11 @@ const StyledAnswerPreview = styled.div`
 
 const AnswerPreview = ({ children, answerRef}) => {
   return (
-    <StyledAnswerPreview ref={answerRef}>{children}</StyledAnswerPreview>
+    <StyledAnswerPreview ref={answerRef}>
+      <AnimatePresence>
+        {children}
+        </AnimatePresence>
+    </StyledAnswerPreview>
   )
 }
 export default AnswerPreview;
