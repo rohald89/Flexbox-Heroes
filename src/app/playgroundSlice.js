@@ -58,6 +58,12 @@ export const playgroundSlice = createSlice({
         const { property, value, index } = action.payload;
         state.flexItems[index].styles[property] = value;
     },
+    changeFlexItemColor: (state, action) => {
+        console.log(state);
+        const { color, index } = action.payload;
+        state.flexItems[index].color = color;
+
+    },
     addFlexItem: (state, action) => {
         state.flexItems.push({
             color: '#5D687A',
@@ -110,6 +116,6 @@ export const playgroundSlice = createSlice({
   },
 });
 
-export const { setOverFlow, setActiveTab, changeProperty, changeFlexItemProperty, addFlexItem, removeFlexItem, resetProperty, resetPlayground, generateCode } = playgroundSlice.actions;
+export const { setOverFlow, setActiveTab, changeProperty, changeFlexItemProperty, changeFlexItemColor, addFlexItem, removeFlexItem, resetProperty, resetPlayground, generateCode } = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;

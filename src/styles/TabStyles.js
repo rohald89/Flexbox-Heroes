@@ -6,6 +6,7 @@ const StyledRoot = styled(Tabs.Root)`
   border-radius: 5px;
   color: white;
   overflow: hidden;
+  user-select: none;
   transition: box-shadow 400ms ease-in-out;
   &:hover {
     box-shadow: ${({ theme }) => theme.shadowHover};

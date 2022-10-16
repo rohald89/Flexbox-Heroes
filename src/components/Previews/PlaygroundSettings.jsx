@@ -2,6 +2,7 @@ import Dropdown from '../../components/shared/Dropdown/Dropdown';
 import {
     changeProperty,
     changeFlexItemProperty,
+    changeFlexItemColor
   } from '../../app/playgroundSlice';
   import {
     TabsContent,
@@ -12,12 +13,13 @@ import {
   import { setActiveTab } from '../../app/playgroundSlice';
   import Slider from '../../components/shared/Slider/Slider';
 import { useDispatch, useSelector } from 'react-redux';
+import { GithubPicker } from 'react-color';
 
 const PlaygroundSettings = () => {
   const { activeTab, styles, flexItems } = useSelector((state) => state.playground);
   const dispatch = useDispatch();
 
-  console.log('PlaygroundSettings rendered');
+  console.log('PlaygroundSettings rendered', flexItems);
   return (
     <TabsRoot
           defaultValue="container"
@@ -97,6 +99,13 @@ const PlaygroundSettings = () => {
           </TabsContent>
           {flexItems.map((item, index) => (
             <TabsContent key={index} value={index}>
+                <GithubPicker
+                triangle='top-right'
+                colors={['#81A1C1','#BC616A','#D08770','#EBCB8B','#A3BE8C','#B48EAD']}
+                width='163px'
+                onChange={(color) => dispatch(changeFlexItemColor({ color: color.hex, index }))}
+                />
+
               <Dropdown
                 index={index}
                 label="flex-grow"

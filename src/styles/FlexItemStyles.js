@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const FlexItemStyles = styled(motion.div)`
   position: relative;
   background-color: ${(props) =>
-    props.type === 'solution' ? 'transparent' : props.type === 'answer' ? props.color : props.theme.accent};
+    props.type === 'solution' ? 'transparent' : props.color};
   display: inline-flex;
   align-items: center;
   justify-content: center;
