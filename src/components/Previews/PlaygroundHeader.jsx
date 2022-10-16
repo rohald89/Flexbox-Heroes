@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Button from "../shared/Button"
-import CodeBlock from "../codeBlock"
+import CodeBlock from "../CodeBlock"
 import Modal from "../shared/Modal/Modal"
 import OverflowWarning from "../OverflowWarning"
 import { CodeIcon, PlusCircledIcon, ResetIcon } from "@radix-ui/react-icons"

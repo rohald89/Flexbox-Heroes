@@ -4,7 +4,7 @@ import { remarkCodeHike } from '@code-hike/mdx';
 import { CH } from '@code-hike/mdx/dist/components.cjs.js';
 import theme from 'shiki/themes/nord.json';
 import CodeEditor from '../../components/CodeEditor';
-import GameBoard from '../../components/GameBoard';
+import GameBoard from '../../components/Previews/GameBoard';
 import { setActiveChallenge } from '../../app/challengeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
