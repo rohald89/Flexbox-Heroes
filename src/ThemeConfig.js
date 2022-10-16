@@ -18,6 +18,7 @@ const nord = {
   nord14: '#A3BE8C',
   nord15: '#B48EAD',
 };
+
 export const lightTheme = {
   body: '#F2F4F8',
   text: nord.nord3,
@@ -27,6 +28,10 @@ export const lightTheme = {
   accentHover: '#E8ECF1',
   accent: nord.nord4,
   focus: '#6580A9',
+  wave1: "#F4F6F9",
+  wave2: "#F8F9FB",
+  wave3: "#FBFBFC",
+//   wave3: nord.nord1,
   ...nord,
 };
 
@@ -39,6 +44,10 @@ export const darkTheme = {
   accentHover: nord.nord1,
   accent: nord.nord2,
   focus: '#6580A9',
+  wave1: "#383D4B",
+  wave2: "#3A404E",
+  wave3: "#3C4251",
+//   wave3: nord.nord1,
   ...nord,
 };
 
@@ -68,7 +77,7 @@ body {
 }
 
 .spacer {
-    aspect-ratio: 9/2.5;
+    aspect-ratio: 1440 /100;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -76,6 +85,6 @@ body {
 }
 
 .waves-1 {
-    background-image: url('/waves.svg');
+    background-image: url('/waves-4.svg');
 }
 `;
