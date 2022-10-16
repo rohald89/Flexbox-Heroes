@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
-import { HeaderStyles, NavStyles } from './styled';
+import { HeaderStyles, HeaderWrapper, NavStyles } from './styled';
+
+
 
 const Header = () => {
   return (
     <HeaderStyles>
+      <HeaderWrapper>
       <h1>FlexboxHeroes</h1>
       <NavStyles>
         <ul>
@@ -24,6 +27,7 @@ const Header = () => {
         </ul>
         <ThemeToggle />
       </NavStyles>
+      </HeaderWrapper>
     </HeaderStyles>
   );
 };

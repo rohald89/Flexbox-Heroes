@@ -45,7 +45,6 @@ export const darkTheme = {
 export const GlobalStyles = createGlobalStyle`
 html {
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 *, *:before, *:after {
@@ -56,9 +55,27 @@ body {
   margin: 0;
   min-height: 100vh;
   transition: background .3s ease,
-color .3s ease;
+    color .3s ease;
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
   font-family: 'Rubik', sans-serif;
+
+  & > div {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.spacer {
+    aspect-ratio: 9/2.5;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.waves-1 {
+    background-image: url('/waves.svg');
 }
 `;

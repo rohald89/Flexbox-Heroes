@@ -1,13 +1,23 @@
 import styled from 'styled-components';
 
 export const HeaderStyles = styled.header`
+  background-color: ${({ theme }) => theme.body};
+  box-shadow: ${({theme}) => theme.shadow};
+  width: 100%;
+  position:fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+`;
+
+export const HeaderWrapper = styled.div`
+  margin: 0 auto;
+  width: 95%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 95%;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-bottom: 2px solid ${({ theme }) => theme.border};
 `;
 
 export const NavStyles = styled.nav`
