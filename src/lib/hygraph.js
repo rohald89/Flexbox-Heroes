@@ -82,7 +82,7 @@ query getChallenge($id: ID!) {
     boilerplate
     solution {
       justifyContent
-      alignItems 
+      alignItems
       flexDirection
       flexWrap
       gap
@@ -99,3 +99,49 @@ query getChallenge($id: ID!) {
   console.log(data);
   return data;
 }
+
+export async function fetchAllProperties() {
+    console.log('fetchAllProperties');
+    const data = await fetchAPI(
+      `
+            query {
+              properties {
+                id
+                name
+                slug
+                description
+              }
+            }
+                    `,
+      {
+        preview: false,
+      }
+    );
+    console.log(data);
+    return data.properties;
+  }
+
+  export async function fetchPropertyBySlug(slug) {
+    console.log('fetchSingleChallenge');
+    console.log(slug)
+    const data = await fetchAPI(
+    `query getProperty($slug: String!) {
+    property(where: {
+        slug: $slug
+    }){
+        id
+        name
+        slug
+        description
+    }
+}
+`
+        , {
+        variables: {
+          slug
+        }
+      }
+    );
+    console.log(data);
+    return data;
+  }
