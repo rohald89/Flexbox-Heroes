@@ -1,7 +1,6 @@
 import { fetchAllChallenges } from "../../lib/hygraph";
 import PageWrapper from "../../styles/PageWrapper";
 
-const { getAllChallenges } = require("../../utils/mdx")
 
 export default function PropertyPage({ challenges }) {
     return (
@@ -18,7 +17,7 @@ export default function PropertyPage({ challenges }) {
     )
 }
 
-export async function getStaticProps() { 
+export async function getStaticProps() {
     const challenges = await fetchAllChallenges();
 
   console.log(challenges);
